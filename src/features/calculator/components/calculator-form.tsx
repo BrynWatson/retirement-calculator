@@ -27,6 +27,7 @@ export const CalculatorForm = ({ onSubmit }: CalculatorProps) => {
             name="currentAge"
             label="Enter your current age in years."
             type="number"
+            placeholder="e.g 40"
             slotProps={{
               htmlInput: { autoComplete: "off" },
               inputLabel: {
@@ -39,6 +40,7 @@ export const CalculatorForm = ({ onSubmit }: CalculatorProps) => {
             name="retirementAge"
             label="At what age do you plan to retire?"
             type="number"
+            placeholder="e.g 65"
             slotProps={{
               htmlInput: { autoComplete: "off" },
               inputLabel: {
@@ -51,6 +53,7 @@ export const CalculatorForm = ({ onSubmit }: CalculatorProps) => {
             name="currentSavings"
             label="Total amount you’ve saved for retirement so far (in Rands)."
             type="number"
+            placeholder="e.g R20000"
             slotProps={{
               htmlInput: { autoComplete: "off" },
               inputLabel: {
@@ -64,8 +67,9 @@ export const CalculatorForm = ({ onSubmit }: CalculatorProps) => {
 
           <Field.Text
             name="monthlyContribution"
-            label="How much you contribute to retirement each month (in Rands)."
+            label="How much you contribute to retirement each month."
             type="number"
+            placeholder="e.g 3000"
             slotProps={{
               htmlInput: { autoComplete: "off" },
               inputLabel: {
@@ -79,15 +83,16 @@ export const CalculatorForm = ({ onSubmit }: CalculatorProps) => {
 
           <Field.Text
             name="annualInterestRate"
-            label="Expected annual investment return (e.g. 7)."
+            label="Expected annual investment return."
             type="number"
+            placeholder="e.g 2"
             slotProps={{
               htmlInput: { autoComplete: "off" },
               inputLabel: {
                 shrink: true,
               },
               input: {
-                startAdornment: <span style={{ marginRight: 4 }}>R</span>,
+                startAdornment: <span style={{ marginRight: 4 }}>%</span>,
               },
             }}
           />
