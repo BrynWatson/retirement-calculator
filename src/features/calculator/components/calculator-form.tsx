@@ -18,36 +18,80 @@ export const CalculatorForm = ({ onSubmit }: CalculatorProps) => {
 
   return (
     <Box sx={{ maxWidth: 400, mx: "auto", mt: 4 }}>
-      <Typography variant="h5" gutterBottom sx={{mb: 2}}>
+      <Typography variant="h5" gutterBottom sx={{ mb: 2 }}>
         Retirement Calculator
       </Typography>
       <Form methods={methods} onSubmit={handleSubmit(onSubmit)}>
-        <Stack spacing={2}>
-          <Field.Text name="currentAge" label="Current Age" type="number" />
+        <Stack spacing={4}>
+          <Field.Text
+            name="currentAge"
+            label="Enter your current age in years."
+            type="number"
+            slotProps={{
+              htmlInput: { autoComplete: "off" },
+              inputLabel: {
+                shrink: true,
+              },
+            }}
+          />
 
           <Field.Text
             name="retirementAge"
-            label="Retirement Age"
+            label="At what age do you plan to retire?"
             type="number"
+            slotProps={{
+              htmlInput: { autoComplete: "off" },
+              inputLabel: {
+                shrink: true,
+              },
+            }}
           />
 
           <Field.Text
             name="currentSavings"
-            label="Current Savings"
+            label="Total amount you’ve saved for retirement so far (in Rands)."
             type="number"
+            slotProps={{
+              htmlInput: { autoComplete: "off" },
+              inputLabel: {
+                shrink: true,
+              },
+              input: {
+                startAdornment: <span style={{ marginRight: 4 }}>R</span>,
+              },
+            }}
           />
 
           <Field.Text
             name="monthlyContribution"
-            label="Monthly Contribution"
+            label="How much you contribute to retirement each month (in Rands)."
             type="number"
+            slotProps={{
+              htmlInput: { autoComplete: "off" },
+              inputLabel: {
+                shrink: true,
+              },
+              input: {
+                startAdornment: <span style={{ marginRight: 4 }}>R</span>,
+              },
+            }}
           />
 
           <Field.Text
             name="annualInterestRate"
-            label="Expected Annual Return (%)"
+            label="Expected annual investment return (e.g. 7)."
             type="number"
+            slotProps={{
+              htmlInput: { autoComplete: "off" },
+              inputLabel: {
+                shrink: true,
+              },
+              input: {
+                startAdornment: <span style={{ marginRight: 4 }}>R</span>,
+              },
+            }}
           />
+
           <Button type="submit" variant="contained">
             Calculate
           </Button>

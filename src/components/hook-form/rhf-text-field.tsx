@@ -20,6 +20,7 @@ export const RHFTextField = ({ name, helperText, type, ...other }: Props) => {
       render={({ field, fieldState: { error } }) => (
         <TextField
           {...field}
+          variant="standard"
           fullWidth
           type={type}
           value={type === "number" && field.value === 0 ? "" : field.value}
@@ -32,9 +33,7 @@ export const RHFTextField = ({ name, helperText, type, ...other }: Props) => {
           }}
           error={!!error}
           helperText={error?.message ?? helperText}
-          slotProps={{
-            htmlInput: { autoComplete: "off" },
-          }}
+         
           {...other}
         />
       )}
