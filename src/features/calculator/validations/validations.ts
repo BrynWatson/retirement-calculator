@@ -34,4 +34,10 @@ export const calculatorSchema = yup.object({
     .required("Annual return is required")
     .min(0, "Return rate must be 0% or more")
     .max(100, "Return rate must be 100% or less"),
+
+  expectedInflationRate: yup
+    .number()
+    .required("Expected inflation is required")
+    .min(0, "Inflation rate must be 0 or more")
+    .max(100, "That inflation rate seems unrealistic"),
 });

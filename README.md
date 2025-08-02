@@ -20,4 +20,23 @@ Simple retirment calculator for assignment
 
    ```bash
    git clone https://github.com/BrynWatson/retirement-calculator.git
+
    cd retirement-calculator
+
+   npm install
+
+   npm run dev
+
+   Then open http://localhost:5173 in your browser.
+
+
+
+
+## 🛠 Assumptions
+
+- Contributions are made monthly
+- Interest is compounded annually
+- Returns are entered as a percentage
+
+
+

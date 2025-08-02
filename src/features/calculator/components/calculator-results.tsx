@@ -1,9 +1,16 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import ReactApexChart from "react-apexcharts";
 
-type CalculatorResultsProps = {
-  projection: { year: number; value: number }[] | null;
+type ProjectionYear = {
+  year: number;
+  value: number;
+  adjustedValue: number;
 };
+
+type CalculatorResultsProps = {
+  projection: ProjectionYear[] | null;
+};
+
 
 export const CalculatorResults = ({ projection }: CalculatorResultsProps) => {
   if (!projection) {
@@ -15,9 +22,18 @@ export const CalculatorResults = ({ projection }: CalculatorResultsProps) => {
         alignItems="center"
         justifyContent="center"
       >
-        <Typography variant="body1" color="text.secondary">
-          Enter your details and calculate to see your retirement projection.
-        </Typography>
+        <Stack direction="column">
+          <Typography
+            variant="h5"
+            gutterBottom
+            sx={{ mb: 2, fontFamily: "cursive", textAlign: "center" }}
+          >
+            Retirement Calculator
+          </Typography>
+          <Typography variant="body1" color="text.secondary">
+            Enter your details and calculate to see your retirement projection.
+          </Typography>
+        </Stack>
       </Box>
     );
   }
@@ -53,8 +69,12 @@ export const CalculatorResults = ({ projection }: CalculatorResultsProps) => {
 
   const series = [
     {
-      name: "Savings",
+      name: "Nominal Savings",
       data: projection.map((p) => p.value),
+    },
+    {
+      name: "Today's Value (Inflation-Adjusted)",
+      data: projection.map((p) => p.adjustedValue),
     },
   ];
 
@@ -87,6 +107,10 @@ export const CalculatorResults = ({ projection }: CalculatorResultsProps) => {
         textAlign="center"
       >
         Total at Retirement: {formatZAR(finalValue)}
+      </Typography>
+      <Typography variant="body2" color="text.secondary" textAlign="center">
+        (~{formatZAR(projection[projection.length - 1].adjustedValue)} in
+        today’s value)
       </Typography>
     </Box>
   );

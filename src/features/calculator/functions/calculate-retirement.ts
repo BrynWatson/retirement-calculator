@@ -3,6 +3,7 @@ import type { FormInputs } from "../components/calculator-form";
 export type ProjectionYear = {
   year: number;
   value: number;
+  adjustedValue: number;
 };
 
 export function calculateRetirementProjection(
@@ -14,10 +15,13 @@ export function calculateRetirementProjection(
     currentSavings,
     monthlyContribution,
     annualInterestRate,
+    expectedInflationRate = 0,
   } = data;
 
   const years = retirementAge - currentAge;
   const rate = annualInterestRate / 100;
+  const inflation = expectedInflationRate / 100;
+
   let total = currentSavings;
   const yearlyContribution = monthlyContribution * 12;
 
@@ -26,9 +30,13 @@ export function calculateRetirementProjection(
   for (let i = 0; i <= years; i++) {
     if (i > 0) total += yearlyContribution;
     total *= 1 + rate;
+
+    const inflationAdjusted = total / Math.pow(1 + inflation, i);
+
     projection.push({
       year: currentAge + i,
       value: total,
+      adjustedValue: inflationAdjusted,
     });
   }
 

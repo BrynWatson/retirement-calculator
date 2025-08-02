@@ -1,4 +1,4 @@
-import { Box, Button, Typography, Stack } from "@mui/material";
+import { Box, Button, Stack } from "@mui/material";
 import { Field, Form } from "../../../components/hook-form";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -21,9 +21,6 @@ export const CalculatorForm = ({ onSubmit }: CalculatorProps) => {
 
   return (
     <Box sx={{ maxWidth: 400, mx: "auto", mt: 4 }}>
-      <Typography variant="h5" gutterBottom sx={{ mb: 2 }}>
-        Retirement Calculator
-      </Typography>
       <Form methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={4}>
           <Field.Text
@@ -89,6 +86,22 @@ export const CalculatorForm = ({ onSubmit }: CalculatorProps) => {
             label="Expected annual investment return."
             type="number"
             placeholder="e.g 2"
+            slotProps={{
+              htmlInput: { autoComplete: "off" },
+              inputLabel: {
+                shrink: true,
+              },
+              input: {
+                startAdornment: <span style={{ marginRight: 4 }}>%</span>,
+              },
+            }}
+          />
+
+          <Field.Text
+            name="expectedInflationRate"
+            label="Expected average annual inflation rate."
+            type="number"
+            placeholder="e.g 5"
             slotProps={{
               htmlInput: { autoComplete: "off" },
               inputLabel: {
