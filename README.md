@@ -47,9 +47,3 @@ The assignment says that returns should be compounded annually, which is what Iâ
    4. npm run dev
 
    5. Then open http://localhost:5173 in your browser.
-
-
-
-
-
-
