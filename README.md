@@ -15,6 +15,22 @@ Simple retirment calculator for assignment
 ## File Managment
 I use a Domain-Driven (feature-based) folder structure, which scales well for larger apps. Each feature has its own folder containing all its relted components, logic, and hooks. Shared or generic elements live in components/, hooks/, or utils/ closer to the root.
 
+## Assumptions
+
+- Contributions are made monthly
+- Interest is compounded annually
+- Returns are entered as a percentage
+
+## Things I wanted to implement
+- Unit Testing
+- ESLint/Prettier configuration
+- API and Service layer (if there was an API invloved)
+
+
+## Final Notes
+
+The assignment says that returns should be compounded annually, which is what I’ve done. In the real world, contributions are made monthly and returns can compound monthly or continuously. This means that my code slightly underestimates the growth compared to a more realistic monthly compounding scenario. However, I’ve  followed the assignments instruction to use annual compounding.
+
 ---
 
 ## How to Run
@@ -33,21 +49,7 @@ I use a Domain-Driven (feature-based) folder structure, which scales well for la
    5. Then open http://localhost:5173 in your browser.
 
 
-## Assumptions
 
-- Contributions are made monthly
-- Interest is compounded annually
-- Returns are entered as a percentage
-
-## Things I wanted to implement
-- Unit Testing
-- ESLint/Prettier configuration
-- API and Service layer (if there was an API invloved)
-
-
-## Final Notes
-
-The assignment says that returns should be compounded annually, which is what I’ve done. In the real world, contributions are made monthly and returns can compound monthly or continuously. This means that my code slightly underestimates the growth compared to a more realistic monthly compounding scenario. However, I’ve  followed the assignments instruction to use annual compounding.
 
 
 
