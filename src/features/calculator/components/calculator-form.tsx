@@ -1,15 +1,23 @@
 import { Box, Button, Typography, Stack } from "@mui/material";
-import { Field, Form } from "../../components/hook-form";
+import { Field, Form } from "../../../components/hook-form";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { calculatorSchema } from "./validations";
+import { calculatorSchema } from "../validations/validations";
+import { calculateRetirement } from "../functions/calculate-retirement";
+import { useState } from "react";
 
 export const CalculatorForm = () => {
+  const [total, setTotal] = useState<number | null>(null);
+
   const methods = useForm({ resolver: yupResolver(calculatorSchema) });
 
   const { handleSubmit } = methods;
 
-  const onSubmit = handleSubmit(async (data) => {});
+  const onSubmit = handleSubmit((data) => {
+    const result = calculateRetirement(data);
+    setTotal(result);
+  });
+
   return (
     <Box sx={{ maxWidth: 400, mx: "auto", mt: 4 }}>
       <Typography variant="h4" gutterBottom>

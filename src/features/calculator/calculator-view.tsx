@@ -1,4 +1,4 @@
-import { CalculatorForm } from "./calculator-form";
+import { CalculatorForm } from "./components/calculator-form";
 
 export const CalculatorView = () => {
   return <CalculatorForm />;
