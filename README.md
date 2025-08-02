@@ -22,9 +22,9 @@ I use a Domain-Driven (feature-based) folder structure, which scales well for la
 - Returns are entered as a percentage
 
 ## Things I wanted to implement
-- Unit Testing
-- ESLint/Prettier configuration
-- API and Service layer (if there was an API invloved)
+- Unit testing
+- API and service layer (if there was an API invloved)
+- Absolute import paths
 
 
 ## Final Notes
