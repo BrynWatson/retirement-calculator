@@ -6,21 +6,39 @@ type CalculatorResultsProps = {
 };
 
 export const CalculatorResults = ({ projection }: CalculatorResultsProps) => {
-  if (!projection || projection.length === 0) return null;
-
+  if (!projection) {
+    return (
+      <Box
+        width="100%"
+        height="100%"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+      >
+        <Typography variant="body1" color="text.secondary">
+          Enter your details and calculate to see your retirement projection.
+        </Typography>
+      </Box>
+    );
+  }
   const finalValue = projection[projection.length - 1].value;
 
   const formatZAR = (val: number) =>
     new Intl.NumberFormat("en-ZA", {
       style: "currency",
       currency: "ZAR",
-      maximumFractionDigits: 2,
+      maximumFractionDigits: 0,
     }).format(val);
 
   const chartOptions = {
     chart: {
       id: "retirement-chart",
       toolbar: { show: false },
+    },
+    yaxis: {
+      labels: {
+        formatter: formatZAR,
+      },
     },
     xaxis: {
       categories: projection.map((p) => p.year),

@@ -14,6 +14,7 @@ type CalculatorProps = {
 export const CalculatorForm = ({ onSubmit }: CalculatorProps) => {
   const methods = useForm<FormInputs>({
     resolver: yupResolver(calculatorSchema),
+    mode: "onBlur",
   });
 
   const { handleSubmit } = methods;
