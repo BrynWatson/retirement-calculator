@@ -1,9 +1,11 @@
 import { Box, Button, Typography, Stack } from "@mui/material";
 import { Field, Form } from "../../components/hook-form";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { calculatorSchema } from "./validations";
 
 export const CalculatorForm = () => {
-  const methods = useForm();
+  const methods = useForm({ resolver: yupResolver(calculatorSchema) });
 
   const { handleSubmit } = methods;
 
@@ -40,7 +42,9 @@ export const CalculatorForm = () => {
             label="Expected Annual Return (%)"
             type="number"
           />
-          <Button variant="contained">Calculate</Button>
+          <Button type="submit" variant="contained">
+            Calculate
+          </Button>
         </Stack>
       </Form>
     </Box>
