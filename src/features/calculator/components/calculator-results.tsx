@@ -1,44 +1,75 @@
-import { Box, Typography, Paper } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import ReactApexChart from "react-apexcharts";
 
 type CalculatorResultsProps = {
-  result: number | null;
+  projection: { year: number; value: number }[] | null;
 };
 
-export const CalculatorResults = ({ result }: CalculatorResultsProps) => {
+export const CalculatorResults = ({ projection }: CalculatorResultsProps) => {
+  if (!projection || projection.length === 0) return null;
+
+  const finalValue = projection[projection.length - 1].value;
+
+  const formatZAR = (val: number) =>
+    new Intl.NumberFormat("en-ZA", {
+      style: "currency",
+      currency: "ZAR",
+      maximumFractionDigits: 2,
+    }).format(val);
+
+  const chartOptions = {
+    chart: {
+      id: "retirement-chart",
+      toolbar: { show: false },
+    },
+    xaxis: {
+      categories: projection.map((p) => p.year),
+    },
+
+    tooltip: {
+      y: {
+        formatter: formatZAR,
+      },
+    },
+  };
+
+  const series = [
+    {
+      name: "Savings",
+      data: projection.map((p) => p.value),
+    },
+  ];
+
   return (
     <Box
+      width="100%"
       display="flex"
-      justifyContent="center"
+      flexDirection="column"
       alignItems="center"
-      height="100%"
+      p={2}
     >
-      <Paper
-        elevation={4}
-        sx={{
-          padding: 4,
-          borderRadius: 3,
-          background: "linear-gradient(135deg, #f0f4ff, #e0f7fa)",
-          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.1)",
-          minWidth: 300,
-          textAlign: "center",
-        }}
+      <Typography variant="h6" gutterBottom>
+        Projected Growth Over Time
+      </Typography>
+
+      <Box width="100%" maxWidth={600}>
+        <ReactApexChart
+          options={chartOptions}
+          series={series}
+          type="line"
+          height={350}
+        />
+      </Box>
+
+      <Typography
+        variant="h5"
+        fontWeight="bold"
+        color="primary"
+        mt={4}
+        textAlign="center"
       >
-        <Typography variant="h5" gutterBottom fontWeight={500}>
-          Projected Savings
-        </Typography>
-        <Typography
-          variant="h4"
-          color="primary"
-          fontWeight={600}
-          sx={{ wordBreak: "break-word" }}
-        >
-          {new Intl.NumberFormat("en-ZA", {
-            style: "currency",
-            currency: "ZAR",
-            minimumFractionDigits: 2,
-          }).format(result || 0)}
-        </Typography>
-      </Paper>
+        Total at Retirement: {formatZAR(finalValue)}
+      </Typography>
     </Box>
   );
 };

@@ -12,7 +12,9 @@ type CalculatorProps = {
 };
 
 export const CalculatorForm = ({ onSubmit }: CalculatorProps) => {
-  const methods = useForm({ resolver: yupResolver(calculatorSchema) });
+  const methods = useForm<FormInputs>({
+    resolver: yupResolver(calculatorSchema),
+  });
 
   const { handleSubmit } = methods;
 
