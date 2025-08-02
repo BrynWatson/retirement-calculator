@@ -3,27 +3,25 @@ import { Field, Form } from "../../../components/hook-form";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { calculatorSchema } from "../validations/validations";
-import { calculateRetirement } from "../functions/calculate-retirement";
-import { useState } from "react";
+import * as yup from "yup";
 
-export const CalculatorForm = () => {
-  const [total, setTotal] = useState<number | null>(null);
+export type FormInputs = yup.InferType<typeof calculatorSchema>;
 
+type CalculatorProps = {
+  onSubmit: (data: FormInputs) => void;
+};
+
+export const CalculatorForm = ({ onSubmit }: CalculatorProps) => {
   const methods = useForm({ resolver: yupResolver(calculatorSchema) });
 
   const { handleSubmit } = methods;
 
-  const onSubmit = handleSubmit((data) => {
-    const result = calculateRetirement(data);
-    setTotal(result);
-  });
-
   return (
     <Box sx={{ maxWidth: 400, mx: "auto", mt: 4 }}>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h5" gutterBottom sx={{mb: 2}}>
         Retirement Calculator
       </Typography>
-      <Form methods={methods} onSubmit={onSubmit}>
+      <Form methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={2}>
           <Field.Text name="currentAge" label="Current Age" type="number" />
 
