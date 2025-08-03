@@ -11,7 +11,6 @@ type CalculatorResultsProps = {
   projection: ProjectionYear[] | null;
 };
 
-
 export const CalculatorResults = ({ projection }: CalculatorResultsProps) => {
   if (!projection) {
     return (
@@ -26,7 +25,7 @@ export const CalculatorResults = ({ projection }: CalculatorResultsProps) => {
           <Typography
             variant="h5"
             gutterBottom
-            sx={{ mb: 2, fontFamily: "cursive", textAlign: "center" }}
+            sx={{ mb: 2, textAlign: "center" }}
           >
             Retirement Calculator
           </Typography>
