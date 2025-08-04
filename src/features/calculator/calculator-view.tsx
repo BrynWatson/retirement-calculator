@@ -18,8 +18,19 @@ export const CalculatorView = () => {
   };
 
   return (
-    <Box display="flex" height="100vh">
-      <Box flex={1} display="flex" alignItems="center" justifyContent="center">
+    <Box
+      display="flex"
+      height="100vh"
+      flexDirection={{ xs: "column", md: "row" }}
+    >
+      <Box
+        flex={1}
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        pb={{ xs: 4, md: 0 }}
+        px={2}
+      >
         <CalculatorForm onSubmit={handleCalculate} />
       </Box>
 

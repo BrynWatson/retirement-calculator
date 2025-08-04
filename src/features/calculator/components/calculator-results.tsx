@@ -29,7 +29,11 @@ export const CalculatorResults = ({ projection }: CalculatorResultsProps) => {
           >
             Retirement Calculator
           </Typography>
-          <Typography variant="body1" color="text.secondary">
+          <Typography
+            variant="body1"
+            color="text.secondary"
+            sx={{ textAlign: "center" }}
+          >
             Enter your details and calculate to see your retirement projection.
           </Typography>
         </Stack>

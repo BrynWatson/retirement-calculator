@@ -26,8 +26,6 @@ I use a Domain-Driven (feature-based) folder structure, which scales well for la
 - API and service layer (if there was an API invloved)
 - Absolute import paths
 - Global styling
-- Responsive Layouts for mobile and smaller screens
-
 
 
 ## Final Notes
