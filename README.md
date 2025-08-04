@@ -21,10 +21,13 @@ I use a Domain-Driven (feature-based) folder structure, which scales well for la
 - Interest is compounded annually
 - Returns are entered as a percentage
 
-## Things I wanted to implement
+## Things I wanted to implement (as thats what you would do as youre building these sorts of things from the get go)
 - Unit testing
 - API and service layer (if there was an API invloved)
 - Absolute import paths
+- Global styling
+- Responsive Layouts for mobile and smaller screens
+
 
 
 ## Final Notes

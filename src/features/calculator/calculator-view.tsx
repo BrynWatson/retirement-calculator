@@ -1,5 +1,6 @@
-import Grid from "@mui/material/Grid";
 import { useState } from "react";
+import Box from "@mui/material/Box";
+
 import { CalculatorForm } from "./components/calculator-form";
 import { CalculatorResults } from "./components/calculator-results";
 import {
@@ -17,13 +18,14 @@ export const CalculatorView = () => {
   };
 
   return (
-    <Grid container spacing={2}>
-      <Grid size={{ xs: 12, md: 6 }}>
+    <Box display="flex" height="100vh">
+      <Box flex={1} display="flex" alignItems="center" justifyContent="center">
         <CalculatorForm onSubmit={handleCalculate} />
-      </Grid>
-      <Grid size={{ xs: 12, md: 6 }}>
+      </Box>
+
+      <Box flex={1} display="flex" alignItems="center" justifyContent="center">
         <CalculatorResults projection={projection} />
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 };

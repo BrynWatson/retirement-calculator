@@ -20,7 +20,7 @@ export const CalculatorForm = ({ onSubmit }: CalculatorProps) => {
   const { handleSubmit } = methods;
 
   return (
-    <Box sx={{ maxWidth: 400, mx: "auto", mt: 4 }}>
+    <Box sx={{ width: 400, mt: 4 }}>
       <Form methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <Stack spacing={4}>
           <Field.Text
