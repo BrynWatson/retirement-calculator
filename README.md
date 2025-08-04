@@ -4,6 +4,9 @@ Simple retirment calculator for assignment
 
 ---
 
+## Github Pages Link
+https://brynwatson.github.io/retirement-calculator/
+
 ## Tech Stack
 
 - **React** (with Vite)
